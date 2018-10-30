@@ -10,39 +10,40 @@
     </block>
 
     <block name='title'>
-      <title>Posts: Page {{ _currentPage.page }}</title>
-    </block>
+  <title>Posts: Page {{ _currentPage.page }}</title>
+</block>
 
-    <block name='stylesheets'>
-      <link rel='stylesheet' href='/css/index.css' />
-    </block>
-  </head>
+<block name='stylesheets'>
+  <link rel='stylesheet' href='/css/index.css' />
+</block>
+</head>
 
-  <body>
-    <main id='{{ pageId }}'>
-      <h1>Posts: Page {{ _currentPage.page }}</h1>
-  
-      <pages retext-skip>{{{ JSON.stringify(_pages) }}}</pages>
-      <current retext-skip>{{{ JSON.stringify(_currentPage) }}}</current>
+<body>
+  <main id='{{ pageId }}'>
+    <h1>Posts: Page {{ _currentPage.page }}</h1>
 
-      <ul>
-        <each loop='post in _currentPage.posts'>
-          <li>
-            <a href='/{{ post._path }}'>{{ post.title }}</a>
-          </li>
-        </each>
-      </ul>
+    <pages retext-skip>{{{ JSON.stringify(_pages) }}}</pages>
+    <current retext-skip>{{{ JSON.stringify(_currentPage) }}}</current>
 
-      <if condition="_currentPage.page === 2">
-        <a href="/posts/">Back</a>
-      </if>
-      <if condition="_currentPage.page > 1 && _currentPage.page !== 2">
-        <a href="{{ _currentPage.page-1 }}">Back</a>
-      </if>
-      <if condition="_currentPage.page < _pages.posts.length">
-        <a href="{{ _currentPage.page+1 }}">Next</a>
-      </if>
-    </main>
+    <ul>
+      <each loop='post in _currentPage.posts'>
+        <li>
+          <a href='/{{ post._path }}'>{{ post.title }}</a>
+        </li>
+      </each>
+    </ul>
+
+    <if condition="_currentPage.page === 2">
+      <a href="/posts/">Back</a>
+    </if>
+    <if condition="_currentPage.page > 1 && _currentPage.page !== 2">
+      <a href="{{ _currentPage.page-1 }}">Back</a>
+    </if>
+    <if condition="_currentPage.page < _pages.posts.length">
+      <a href="{{ _currentPage.page+1 }}">Next</a>
+    </if>
+  </main>
+
 
     <block name='javascript'>
       <script src='/js/main.js' defer></script>
