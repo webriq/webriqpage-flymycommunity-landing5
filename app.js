@@ -75,6 +75,7 @@ const collections = new Collections({
 const records = new Records({
   addDataTo: locals,
   site: { file: "data/site.json" },
+  gallery: { file: "data/gallery.json" },
   biography: { file: "data/biography.json" },
   video: { callback: getVideoThumbnail }
 });
