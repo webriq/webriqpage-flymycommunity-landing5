@@ -73,7 +73,7 @@ collections: # A list of collections the CMS should be able to edit
                   - {label: "File Name", name: "name", widget: "string"}
                   - {label: "File Type", name: "file", widget: "image", media_folder: "assets/uploads"}
 
-      - label: "Content Information"
+              - label: "Content Information"
                 name: "content"
                 widget: "list"
                 fields:
@@ -83,10 +83,9 @@ collections: # A list of collections the CMS should be able to edit
                   - {label: "Video Subheading", name: "slidertext1", widget: "string", dom_data: [{ target: ".video-subheading", attr: "text"}] }
                   - {label: "Video Heading", name: "slidertext2", widget: "string", dom_data: [{ target: ".video-heading", attr: "text"}]}
 
-      - label: "About Information"
+              - label: "About Information"
                 name: "about"
                 widget: "list"
                 fields:
                   - {label: "Video Title", name: "abouttext1", placeholder_text: "Edit video title", default_text: "Crystal Park - FMC ", widget: "string", dom_data: [{ target: ".video-title", attr: "text"}]}
                   - {label: "Video Description", name: "abouttext2", placeholder_text: "Edit video description", default_text: "Crystal Park is a private gated mountain community within the Pikes Peak region. Located above Colorado Springs and adjacent to Manitou Springs.....", widget: "string", dom_data: [{ target: ".video-description", attr: "text"}]}
-
