@@ -269,7 +269,7 @@ h2 {
 /*Biography*/
 
 #bioraphy {
-  background: url(/img/white-bg.jpg) repeat;
+  background: #202020 url(/img/fly5_bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -282,7 +282,7 @@ h2 {
 }
 
 .card-header {
-  background: #fff;
+  background: transparent;
   width: 380px;
 }
 
@@ -328,9 +328,17 @@ h2 {
   color: #89b9ff;
 }
 
+.inline .details .social a {
+  border-color: #4b7bbe;
+}
+.inline .details .social a i{
+  color: #4b7bbe;
+}
+
 #bioraphy p {
   font-weight: 200;
   margin-bottom: 0px;
+  color: #fff;
 }
 
 #bioraphy h2 {
@@ -376,7 +384,7 @@ h2 {
   width: 100%;
   padding: 20px;
   border-radius: 3px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 
@@ -425,7 +433,7 @@ h2 {
 }
 
 .card-body .card-text a {
-  color: #4b7bbe;
+  color: #ffffff;
   padding-left: 25px;
 }
 
@@ -465,31 +473,32 @@ h2 {
   left: 30px;
   margin-top: 5px;
 }
+.details .avatar {
+  border-radius: 100px;
+}
 
-.btn-blue {
+.btn-white {
   color: #fff !important;
-  border: solid 1px rgba(221, 221, 221, .34902);
+  border: solid 1px #ffffff;
   padding: 10px 30px;
   text-align: center;
-  background: #4370b6;
-  border-radius: 0px;
+  background: transparent;
+  border-radius: 100px;
 }
-
-.btn-blue:hover {
-  color: #4370b6 !important;
+.btn-white:hover {
+  color: #ffffff !important;
   padding: 10px 30px;
   text-align: center;
   background: transparent !important;
-  border: 1px solid #4370b6 !important;
+  border: 1px solid #ffffff !important;
 }
-
-.btn-blue:active,
-.btn-blue:focus {
-  color: #4370b6 !important;
+.btn-white:active,
+.btn-white:focus {
+  color: #ffffff !important;
   padding: 10px 30px;
   text-align: center;
   background: transparent !important;
-  border: 1px solid #4370b6 !important;
+  border: 1px solid #fff !important;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0rem rgba(0, 123, 255, .5) !important;
   box-shadow: 0 0 0 0rem rgba(0, 123, 255, .5) !important;
@@ -507,7 +516,7 @@ h2 {
   justify-content:flex-start
 }
 .social a {
-  border: 1px solid #4370b6;
+  border: 1px solid #ffffff;
   margin-right:6px;
   display:flex !important;
   align-items:center;
@@ -521,6 +530,7 @@ h2 {
   position:relative;
   left:0;
   margin:0;
+  color: #ffffff;
 }
 
 /*GALLERY*/
