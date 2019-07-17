@@ -1,20 +1,20 @@
-const htmlStandards = require('reshape-standard')
-const cssStandards = require('spike-css-standards')
-const jsStandards = require('spike-js-standards')
-const pageId = require('spike-page-id')
-const Records = require('spike-records')
-const Collections = require('spike-collections')
-const excerpt = require('html-excerpt')
-const env = process.env.SPIKE_ENV
-const https = require('https')
-const fs = require('fs')
+const htmlStandards = require("reshape-standard");
+const cssStandards = require("spike-css-standards");
+const jsStandards = require("spike-js-standards");
+const pageId = require("spike-page-id");
+const Records = require("spike-records");
+const Collections = require("spike-collections");
+const excerpt = require("html-excerpt");
+const env = process.env.SPIKE_ENV;
+const https = require("https");
+const fs = require("fs");
 const locals = {
   dataExcerpt: postExcerpt
-}
-let request = require('request')
+};
+let request = require("request");
 
 function postExcerpt(html, length, ellipsis) {
-  return excerpt.text(html, length || 100, ellipsis || '...');
+  return excerpt.text(html, length || 100, ellipsis || "...");
 }
 
 function getVideoThumbnail() {
@@ -25,7 +25,8 @@ function getVideoThumbnail() {
       let videoId = obj.content[0].videoid;
       const url = "" + videoId + ".json";
       request.get(
-        "https://api.vimeo.com/videos/" + videoId, {
+        "https://api.vimeo.com/videos/" + videoId,
+        {
           auth: {
             bearer: "525b876a547a549ea9db0c236918d29b"
           }
@@ -57,41 +58,48 @@ const collections = new Collections({
   addDataTo: locals,
   collections: {
     posts: {
-      files: 'posts/**',
-      markdownLayout: 'templates/posts/single.html',
+      files: "posts/**",
+      markdownLayout: "templates/posts/single.html",
       paginate: {
         perPage: 1,
-        template: 'templates/posts/post.html',
+        template: "templates/posts/post.html",
         output: n => {
           if (n === 1) {
-            return `posts/index.html`
+            return `posts/index.html`;
           }
-          return `posts/${n}.html`
+          return `posts/${n}.html`;
         }
       }
     }
   }
-})
+});
 const records = new Records({
   addDataTo: locals,
   site: { file: "data/site.json" },
   gallery: { file: "data/gallery.json" },
-  biography: { file: "data/biography.json" },
+  biography: { file: "data/bio.json" },
   video: { callback: getVideoThumbnail }
 });
 module.exports = {
-  devtool: 'source-map',
-  ignore: ['**/layout.html', '**/_*', '**/.*', 'readme.md', 'yarn.lock'],
+  devtool: "source-map",
+  ignore: ["**/layout.html", "**/_*", "**/.*", "readme.md", "yarn.lock"],
   reshape: htmlStandards({
     locals: ctx => {
-      return ctx, Object.assign({ pageId: pageId(ctx) }, { deployVersion: new Date().getTime() }, locals)
+      return (
+        ctx,
+        Object.assign(
+          { pageId: pageId(ctx) },
+          { deployVersion: new Date().getTime() },
+          locals
+        )
+      );
     },
-    minify: env === 'production'
+    minify: env === "production"
   }),
   postcss: cssStandards({
-    minify: env === 'production'
+    minify: env === "production"
   }),
   babel: jsStandards(),
-  vendor: ['assets/js/**'],
+  vendor: ["assets/js/**"],
   plugins: [records, collections]
-}
+};
